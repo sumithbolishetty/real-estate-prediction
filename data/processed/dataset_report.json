@@ -1,0 +1,685 @@
+{
+  "source_rows": 42,
+  "rows_after_cleaning": 42,
+  "columns": [
+    "location",
+    "area",
+    "bedrooms",
+    "bathrooms",
+    "property_type",
+    "parking",
+    "property_age",
+    "amenities",
+    "price"
+  ],
+  "data_types": {
+    "location": "str",
+    "area": "int64",
+    "bedrooms": "int64",
+    "bathrooms": "int64",
+    "property_type": "str",
+    "parking": "str",
+    "property_age": "int64",
+    "amenities": "str",
+    "price": "int64"
+  },
+  "raw_categorical_values": {
+    "location": [
+      "Bengaluru",
+      "Chennai",
+      "Delhi",
+      "Hyderabad",
+      "Kolkata",
+      "Mumbai",
+      "Pune"
+    ],
+    "property_type": [
+      "Apartment",
+      "Independent House",
+      "Villa"
+    ],
+    "parking": [
+      "No",
+      "Yes"
+    ]
+  },
+  "category_normalization_collisions": {
+    "location": {},
+    "property_type": {},
+    "parking": {}
+  },
+  "amenity_source_bundle_count": 14,
+  "amenity_source_tokens": [
+    "Club House",
+    "Garden",
+    "Gym",
+    "Lift",
+    "Parking",
+    "Power Backup",
+    "Security",
+    "Swimming Pool"
+  ],
+  "duplicate_rows_removed": 0,
+  "rows_with_missing_values_removed": 0,
+  "rows_with_blank_categories_removed": 0,
+  "rows_with_invalid_numeric_values_removed": 0,
+  "rows_with_invalid_values_removed": 0,
+  "numerical_ranges_and_iqr_outlier_counts": {
+    "area": {
+      "min": 640.0,
+      "max": 2600.0,
+      "iqr_outlier_count": 0
+    },
+    "bedrooms": {
+      "min": 1.0,
+      "max": 4.0,
+      "iqr_outlier_count": 0
+    },
+    "bathrooms": {
+      "min": 1.0,
+      "max": 4.0,
+      "iqr_outlier_count": 0
+    },
+    "property_age": {
+      "min": 2.0,
+      "max": 25.0,
+      "iqr_outlier_count": 0
+    },
+    "price": {
+      "min": 4800000.0,
+      "max": 62000000.0,
+      "iqr_outlier_count": 3
+    }
+  },
+  "locations": [
+    "bengaluru",
+    "chennai",
+    "delhi",
+    "hyderabad",
+    "kolkata",
+    "mumbai",
+    "pune"
+  ],
+  "property_types": [
+    "apartment",
+    "independent house",
+    "villa"
+  ],
+  "parking_options": [
+    "no",
+    "yes"
+  ],
+  "amenities": [
+    "Gym",
+    "Swimming Pool",
+    "Garden",
+    "Security",
+    "Lift",
+    "Club House",
+    "Power Backup",
+    "Parking"
+  ],
+  "missing_values_before_cleaning": {
+    "location": 0,
+    "area": 0,
+    "bedrooms": 0,
+    "bathrooms": 0,
+    "property_type": 0,
+    "parking": 0,
+    "property_age": 0,
+    "amenities": 0,
+    "price": 0
+  },
+  "categorical_normalization": "trim, case-fold, and collapse whitespace; amenities canonicalized against allowlist",
+  "cleaning_policy": "remove exact duplicates, rows missing required fields, nonnumeric numeric values, and rows where area<=0, bedrooms<1, bathrooms<=0, property_age<0, or price<=0; retain valid outliers and report IQR counts",
+  "dataset_source": "Existing project demo dataset at data/raw/sample_properties.csv; no additional compatible dataset was present",
+  "feature_names": [
+    "location",
+    "area",
+    "bedrooms",
+    "bathrooms",
+    "property_type",
+    "parking",
+    "property_age",
+    "amenities"
+  ],
+  "target_variable": "price",
+  "categorical_features": [
+    "location",
+    "property_type",
+    "parking",
+    "amenities (multi-hot)"
+  ],
+  "numerical_features": [
+    "area",
+    "bedrooms",
+    "bathrooms",
+    "property_age"
+  ],
+  "cleaning_performed": "Exact duplicates, missing required values, nonnumeric numeric values, and invalid area/bedroom/bathroom/age/price rows are removed; category text is normalized; malformed amenity tokens are rejected. No rows required removal in this dataset.",
+  "feature_analysis": {
+    "numerical_features": {
+      "area": {
+        "unique_values": 40,
+        "constant": false,
+        "min": 640.0,
+        "max": 2600.0,
+        "pearson_correlation_with_price_descriptive_only": 0.7696594862779262
+      },
+      "bedrooms": {
+        "unique_values": 4,
+        "constant": false,
+        "min": 1.0,
+        "max": 4.0,
+        "pearson_correlation_with_price_descriptive_only": 0.6148333548874396
+      },
+      "bathrooms": {
+        "unique_values": 4,
+        "constant": false,
+        "min": 1.0,
+        "max": 4.0,
+        "pearson_correlation_with_price_descriptive_only": 0.7381028963032775
+      },
+      "property_age": {
+        "unique_values": 19,
+        "constant": false,
+        "min": 2.0,
+        "max": 25.0,
+        "pearson_correlation_with_price_descriptive_only": -0.21550930243437744
+      }
+    },
+    "categorical_features": {
+      "location": {
+        "unique_values": 7,
+        "constant": false,
+        "categories": [
+          "bengaluru",
+          "chennai",
+          "delhi",
+          "hyderabad",
+          "kolkata",
+          "mumbai",
+          "pune"
+        ]
+      },
+      "property_type": {
+        "unique_values": 3,
+        "constant": false,
+        "categories": [
+          "apartment",
+          "independent house",
+          "villa"
+        ]
+      },
+      "parking": {
+        "unique_values": 2,
+        "constant": false,
+        "categories": [
+          "no",
+          "yes"
+        ]
+      },
+      "amenities": {
+        "representation": "pipe-delimited source values canonicalized into 8 multi-hot amenity flags",
+        "distinct_bundles": 14,
+        "unique_amenity_flags": 8,
+        "token_counts": {
+          "Gym": 18,
+          "Swimming Pool": 9,
+          "Garden": 15,
+          "Security": 39,
+          "Lift": 27,
+          "Club House": 5,
+          "Power Backup": 10,
+          "Parking": 11
+        }
+      }
+    },
+    "iqr_outlier_analysis": {
+      "area": {
+        "iqr_flag_count": 0,
+        "rows_retained": [],
+        "decision": "All statistically flagged rows retained; no clear data-entry error found. IQR flags alone are not grounds for deletion."
+      },
+      "bedrooms": {
+        "iqr_flag_count": 0,
+        "rows_retained": [],
+        "decision": "All statistically flagged rows retained; no clear data-entry error found. IQR flags alone are not grounds for deletion."
+      },
+      "bathrooms": {
+        "iqr_flag_count": 0,
+        "rows_retained": [],
+        "decision": "All statistically flagged rows retained; no clear data-entry error found. IQR flags alone are not grounds for deletion."
+      },
+      "property_age": {
+        "iqr_flag_count": 0,
+        "rows_retained": [],
+        "decision": "All statistically flagged rows retained; no clear data-entry error found. IQR flags alone are not grounds for deletion."
+      },
+      "price": {
+        "iqr_flag_count": 3,
+        "rows_retained": [
+          {
+            "location": "mumbai",
+            "area": 2000,
+            "bedrooms": 3,
+            "bathrooms": 3,
+            "property_type": "independent house",
+            "parking": "yes",
+            "property_age": 20,
+            "amenities": [
+              "Garden",
+              "Security",
+              "Parking"
+            ],
+            "price": 39000000
+          },
+          {
+            "location": "mumbai",
+            "area": 2600,
+            "bedrooms": 4,
+            "bathrooms": 4,
+            "property_type": "villa",
+            "parking": "yes",
+            "property_age": 5,
+            "amenities": [
+              "Swimming Pool",
+              "Garden",
+              "Security",
+              "Power Backup"
+            ],
+            "price": 62000000
+          },
+          {
+            "location": "delhi",
+            "area": 2400,
+            "bedrooms": 4,
+            "bathrooms": 4,
+            "property_type": "villa",
+            "parking": "yes",
+            "property_age": 6,
+            "amenities": [
+              "Swimming Pool",
+              "Garden",
+              "Security",
+              "Club House"
+            ],
+            "price": 39000000
+          }
+        ],
+        "decision": "All statistically flagged rows retained; no clear data-entry error found. IQR flags alone are not grounds for deletion."
+      }
+    },
+    "price_distribution": {
+      "min": 4800000.0,
+      "q1": 8325000.0,
+      "median": 12650000.0,
+      "mean": 16152380.952380951,
+      "q3": 19250000.0,
+      "max": 62000000.0,
+      "iqr_outlier_count": 3,
+      "possible_iqr_outliers_retained": [
+        {
+          "location": "mumbai",
+          "area": 2000,
+          "bedrooms": 3,
+          "bathrooms": 3,
+          "property_type": "independent house",
+          "parking": "yes",
+          "property_age": 20,
+          "amenities": [
+            "Garden",
+            "Security",
+            "Parking"
+          ],
+          "price": 39000000
+        },
+        {
+          "location": "mumbai",
+          "area": 2600,
+          "bedrooms": 4,
+          "bathrooms": 4,
+          "property_type": "villa",
+          "parking": "yes",
+          "property_age": 5,
+          "amenities": [
+            "Swimming Pool",
+            "Garden",
+            "Security",
+            "Power Backup"
+          ],
+          "price": 62000000
+        },
+        {
+          "location": "delhi",
+          "area": 2400,
+          "bedrooms": 4,
+          "bathrooms": 4,
+          "property_type": "villa",
+          "parking": "yes",
+          "property_age": 6,
+          "amenities": [
+            "Swimming Pool",
+            "Garden",
+            "Security",
+            "Club House"
+          ],
+          "price": 39000000
+        }
+      ],
+      "outlier_decision": "Retained: no clear data-entry error; flagged records have premium property attributes. Data is demo data, so real-world legitimacy cannot be independently established."
+    },
+    "notes": [
+      "No input feature is constant in the 42 rows.",
+      "Location has 7 categories, property type 3, and parking 2; cardinality is modest.",
+      "The 14 source amenity bundles are decomposed into 8 multi-hot amenity indicators.",
+      "Numeric correlations are descriptive associations and do not establish cause."
+    ]
+  },
+  "model_comparison": {
+    "Mean Price Baseline": {
+      "summary": {
+        "MAE": {
+          "mean": 8116410.180233708,
+          "std": 2180268.376752596
+        },
+        "RMSE": {
+          "mean": 10783478.749785919,
+          "std": 4319393.389860622
+        },
+        "R2": {
+          "mean": -0.21270049902229307,
+          "std": 0.2241146516906613
+        }
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "test_rows": 9,
+          "MAE": 5640404.04040404,
+          "RMSE": 7730597.027064447,
+          "R2": -0.0028781898682099794
+        },
+        {
+          "fold": 2,
+          "test_rows": 9,
+          "MAE": 10954882.154882155,
+          "RMSE": 13203100.20081511,
+          "R2": -0.10139750797837488
+        },
+        {
+          "fold": 3,
+          "test_rows": 8,
+          "MAE": 7218382.352941176,
+          "RMSE": 7908845.951885612,
+          "R2": -0.4058168607847603
+        },
+        {
+          "fold": 4,
+          "test_rows": 8,
+          "MAE": 6991911.7647058815,
+          "RMSE": 7792016.364917482,
+          "R2": -0.49920067363183085
+        },
+        {
+          "fold": 5,
+          "test_rows": 8,
+          "MAE": 9776470.588235293,
+          "RMSE": 17282834.20424694,
+          "R2": -0.05420926284828931
+        }
+      ]
+    },
+    "Random Forest Regression": {
+      "summary": {
+        "MAE": {
+          "mean": 4431423.148148148,
+          "std": 2608039.6651782687
+        },
+        "RMSE": {
+          "mean": 6427404.7216521725,
+          "std": 3973786.7226831284
+        },
+        "R2": {
+          "mean": 0.5715243894421878,
+          "std": 0.3371850902791859
+        }
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "test_rows": 9,
+          "MAE": 5508851.851851853,
+          "RMSE": 7610258.942561647,
+          "R2": 0.028101338556902666
+        },
+        {
+          "fold": 2,
+          "test_rows": 9,
+          "MAE": 4032888.888888889,
+          "RMSE": 7089109.998293242,
+          "R2": 0.6824766401926969
+        },
+        {
+          "fold": 3,
+          "test_rows": 8,
+          "MAE": 1852416.6666666667,
+          "RMSE": 2526064.396117671,
+          "R2": 0.8565860656438133
+        },
+        {
+          "fold": 4,
+          "test_rows": 8,
+          "MAE": 2429250.0,
+          "RMSE": 2765843.341349775,
+          "R2": 0.8111072834747778
+        },
+        {
+          "fold": 5,
+          "test_rows": 8,
+          "MAE": 8333708.333333333,
+          "RMSE": 12145746.929938525,
+          "R2": 0.4793506193427485
+        }
+      ]
+    },
+    "Extra Trees Regression": {
+      "summary": {
+        "MAE": {
+          "mean": 3768012.9629629627,
+          "std": 1698884.220289066
+        },
+        "RMSE": {
+          "mean": 6165657.280978897,
+          "std": 3186913.8653163277
+        },
+        "R2": {
+          "mean": 0.5084559664285908,
+          "std": 0.45939975990827425
+        }
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "test_rows": 9,
+          "MAE": 4178925.9259259263,
+          "RMSE": 5908013.096895303,
+          "R2": 0.41425982236825754
+        },
+        {
+          "fold": 2,
+          "test_rows": 9,
+          "MAE": 3414555.5555555555,
+          "RMSE": 5381077.124952898,
+          "R2": 0.817050728541186
+        },
+        {
+          "fold": 3,
+          "test_rows": 8,
+          "MAE": 4074916.666666667,
+          "RMSE": 7409514.7876827195,
+          "R2": -0.2339059348041288
+        },
+        {
+          "fold": 4,
+          "test_rows": 8,
+          "MAE": 1231000.0,
+          "RMSE": 1684416.9779349635,
+          "R2": 0.9299417512353609
+        },
+        {
+          "fold": 5,
+          "test_rows": 8,
+          "MAE": 5940666.666666666,
+          "RMSE": 10445264.417428598,
+          "R2": 0.6149334648022784
+        }
+      ]
+    },
+    "Hist Gradient Boosting Regression": {
+      "summary": {
+        "MAE": {
+          "mean": 4645287.157773908,
+          "std": 2234264.437169015
+        },
+        "RMSE": {
+          "mean": 7016506.650889486,
+          "std": 3526971.4925471037
+        },
+        "R2": {
+          "mean": 0.44477737876625706,
+          "std": 0.45251901048100757
+        }
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "test_rows": 9,
+          "MAE": 6880267.140107966,
+          "RMSE": 8977078.728089832,
+          "R2": -0.35235958550856417
+        },
+        {
+          "fold": 2,
+          "test_rows": 9,
+          "MAE": 5002684.095458944,
+          "RMSE": 7116066.878695246,
+          "R2": 0.6800572354446095
+        },
+        {
+          "fold": 3,
+          "test_rows": 8,
+          "MAE": 2460813.711479796,
+          "RMSE": 3563462.290710533,
+          "R2": 0.7146046784023607
+        },
+        {
+          "fold": 4,
+          "test_rows": 8,
+          "MAE": 2206412.005132972,
+          "RMSE": 3650282.579205555,
+          "R2": 0.6709870226530629
+        },
+        {
+          "fold": 5,
+          "test_rows": 8,
+          "MAE": 6676258.836689863,
+          "RMSE": 11775642.777746266,
+          "R2": 0.5105975428398164
+        }
+      ]
+    }
+  },
+  "selected_model": "Extra Trees Regression",
+  "feature_importance": {
+    "interpretation": "Tree feature importance describes model reliance, not causation; small-data rankings are unstable.",
+    "by_feature_group": {
+      "amenities": 0.3889271483589147,
+      "location": 0.1866677627313694,
+      "area": 0.17773077095578182,
+      "bathrooms": 0.17672084646329447,
+      "bedrooms": 0.03077715192839085,
+      "property_type": 0.023259386321812996,
+      "property_age": 0.011446621978138422,
+      "parking": 0.004470311262297414
+    },
+    "top_encoded_features": [
+      {
+        "feature": "amenity: Swimming Pool",
+        "group": "amenities",
+        "importance": 0.21340882657638868
+      },
+      {
+        "feature": "area",
+        "group": "area",
+        "importance": 0.17773077095578182
+      },
+      {
+        "feature": "bathrooms",
+        "group": "bathrooms",
+        "importance": 0.17672084646329447
+      },
+      {
+        "feature": "location = mumbai",
+        "group": "location",
+        "importance": 0.13262607804835314
+      },
+      {
+        "feature": "amenity: Power Backup",
+        "group": "amenities",
+        "importance": 0.1250339770949503
+      },
+      {
+        "feature": "location = delhi",
+        "group": "location",
+        "importance": 0.042344846921634045
+      },
+      {
+        "feature": "bedrooms",
+        "group": "bedrooms",
+        "importance": 0.03077715192839085
+      },
+      {
+        "feature": "amenity: Club House",
+        "group": "amenities",
+        "importance": 0.016902300385435963
+      },
+      {
+        "feature": "property_age",
+        "group": "property_age",
+        "importance": 0.011446621978138422
+      },
+      {
+        "feature": "property_type = apartment",
+        "group": "property_type",
+        "importance": 0.011369350975752358
+      },
+      {
+        "feature": "amenity: Garden",
+        "group": "amenities",
+        "importance": 0.011247177933794409
+      },
+      {
+        "feature": "location = kolkata",
+        "group": "location",
+        "importance": 0.009089227784252838
+      },
+      {
+        "feature": "amenity: Lift",
+        "group": "amenities",
+        "importance": 0.008704899869890155
+      },
+      {
+        "feature": "amenity: Parking",
+        "group": "amenities",
+        "importance": 0.006837522050125756
+      },
+      {
+        "feature": "amenity: Gym",
+        "group": "amenities",
+        "importance": 0.00677634201338866
+      }
+    ]
+  },
+  "limitations": "The dataset contains only 42 existing demo records. CV scores and feature importance have high uncertainty and do not support claims of production accuracy or real-market validity."
+}
